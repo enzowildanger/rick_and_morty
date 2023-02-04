@@ -49,8 +49,8 @@ export default function Card(props) {
       <h2>{props.name}</h2>
       <img src={props.image} alt="" />
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-        <h2 style={styleSpecie}>Specie: {props.species}</h2>
-        <h2 style={styleGender}>Gender: {props.gender}</h2>
+        <h2 style={styleSpecie}>Specie: {props.species}.</h2>
+        <h2 style={styleGender}>Gender: {props.gender}.</h2>
       </div>
     </DivCard>
   );

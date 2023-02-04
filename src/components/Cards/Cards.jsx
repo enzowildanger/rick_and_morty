@@ -11,13 +11,13 @@ export default function Cards(props) {
   let i = 0;
   return (
     <DivCards>
-      {characters.map((e) => (
+      {characters.map((element) => (
         <Card
-          name={e.name}
-          species={e.species}
-          gender={e.gender}
-          image={e.image}
-          onClose={() => window.alert("Emulamos que se cierra la card")}
+          name={element.name}
+          species={element.species}
+          gender={element.gender}
+          image={element.image}
+          onClose={() => props.onClose(element.id)}
           key={i++}
         />
       ))}
