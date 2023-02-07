@@ -1,7 +1,11 @@
 import "./App.css";
 import Nav from "./components/Nav/Nav";
 import Cards from "./components/Cards/Cards.jsx";
+import About from "./components/About/About.jsx";
+import Detail from "./components/Detail/Detail";
+import Error from "./components/Error/Error.jsx";
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -20,7 +24,7 @@ function App() {
           //   ? setCharacters((characters) => [...characters, data])
           //   : alert("Personaje repetido, prueba otro ID.");
         } else {
-          window.alert("No hay personajes con ese ID.");
+          alert("No hay personajes con ese ID.");
         }
       });
   }
@@ -32,12 +36,18 @@ function App() {
 
   return (
     <div className="App" style={{ padding: "25px" }}>
-      <div>
-        <Nav onSearch={onSearch} random={random} />
-      </div>
-      <div>
-        <Cards characters={characters} onClose={onClose} />
-      </div>
+      <Nav onSearch={onSearch} random={random} />
+
+      <Routes>
+        <Route
+          exact
+          path="/home"
+          element={<Cards characters={characters} onClose={onClose} />}
+        />
+        <Route exact path="/about" element={<About />} />
+        <Route exact path="/detail/:detailId" element={<Detail />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
     </div>
   );
 }

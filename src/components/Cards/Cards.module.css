@@ -1,0 +1,10 @@
+.divCards{
+    display: flex;
+  justify-content: space-evenly;
+}
+
+.pCards{
+  color: white;
+  margin-top: 150px;
+  font-size: 24px;
+}

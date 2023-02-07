@@ -1,26 +1,26 @@
 import Card from "../Card/Card";
-import styled from "styled-components";
-
-const DivCards = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-`;
+import style from "./Cards.module.css";
 
 export default function Cards(props) {
   const { characters } = props;
   let i = 0;
   return (
-    <DivCards>
-      {characters.map((element) => (
-        <Card
-          name={element.name}
-          species={element.species}
-          gender={element.gender}
-          image={element.image}
-          onClose={() => props.onClose(element.id)}
-          key={i++}
-        />
-      ))}
-    </DivCards>
+    <div className={style.divCards}>
+      {characters.length === 0 ? (
+        <p className={style.pCards}>¡Busca un personaje!</p>
+      ) : (
+        characters.map((element) => (
+          <Card
+            id={element.id}
+            name={element.name}
+            species={element.species}
+            gender={element.gender}
+            image={element.image}
+            onClose={() => props.onClose(element.id)}
+            key={i++}
+          />
+        ))
+      )}
+    </div>
   );
 }

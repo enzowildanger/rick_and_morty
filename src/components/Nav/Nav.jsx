@@ -1,5 +1,5 @@
-import styled from "styled-components";
 import SearchBar from "../SearchBar/SearchBar";
+import { Link } from "react-router-dom";
 import style from "./Nav.module.css";
 
 export default function Nav(props) {
@@ -10,6 +10,12 @@ export default function Nav(props) {
         alt="rick_and_morty_logo"
         width="20%"
       />
+      <Link to="/home" className={style.links}>
+        Home
+      </Link>
+      <Link to="/about" className={style.links}>
+        About
+      </Link>
       <SearchBar onSearch={props.onSearch} random={props.random} />
     </nav>
   );

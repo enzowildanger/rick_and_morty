@@ -1,0 +1,39 @@
+.divCard{
+    display: inline-block;
+    background-color: #00b300;
+    border-radius: 10px;
+    color: white;
+    overflow: hidden;
+    margin: 25px 0px 25px 0px;
+}
+
+.buttonCard{
+    position: relative;
+    right: -120px;
+    top: 10px;
+    background-color: red;
+    color: white;
+    border: 0px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.h2Card{
+    color: white;
+    font-weight: bold;
+    text-decoration: none
+}
+
+.styleSpecie{
+    font-size: 16px;
+    margin-right: 15px;
+    margin-top: 10px;
+}
+
+.styleGender{
+    font-size: 16px;
+    margin-top: 10px;
+}
