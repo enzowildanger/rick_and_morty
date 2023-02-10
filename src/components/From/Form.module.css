@@ -1,0 +1,45 @@
+.containForm{
+    background-color: #00b300;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: normal;
+    justify-content: normal;
+    align-items:center ;
+    margin: auto;
+    margin-top: 50px;
+    width: 30%;
+}
+.labelForm{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 25px 25px 25px 25px;
+}
+
+.inputForm{
+    padding: 10px;
+}
+
+.buttonForm{
+    background-color: #004d00;
+    color:white;
+    border: 0px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 10px;
+    margin: 25px 25px 25px 25px;
+    cursor: pointer;
+}
+
+.warning {
+    border: solid red 1px;
+    border-radius: 0.2em;
+}
+  
+.danger {
+    font-size: 15px;
+    color: yellow;
+    text-align: center;
+}

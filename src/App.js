@@ -4,8 +4,9 @@ import Cards from "./components/Cards/Cards.jsx";
 import About from "./components/About/About.jsx";
 import Detail from "./components/Detail/Detail";
 import Error from "./components/Error/Error.jsx";
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import Form from "./components/From/Form.jsx";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -34,11 +35,35 @@ function App() {
     onSearch(randomId);
   }
 
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [access, setAccess] = useState(false);
+  const username = "ejemplo@gmail.com";
+  const password = "password1";
+
+  function login(userData) {
+    if (userData.password === password && userData.username === username) {
+      setAccess(true);
+      navigate("/home");
+    }
+  }
+
+  useEffect(() => {
+    !access && navigate("/");
+  }, [access]);
+
+  function logout() {
+    setAccess(false);
+  }
+
   return (
     <div className="App" style={{ padding: "25px" }}>
-      <Nav onSearch={onSearch} random={random} />
+      {location.pathname !== "/" && (
+        <Nav onSearch={onSearch} random={random} logout={logout} />
+      )}
 
       <Routes>
+        <Route path="/" element={<Form login={login} />} />
         <Route
           exact
           path="/home"

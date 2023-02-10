@@ -15,6 +15,7 @@ export default function SearchBar(props) {
         className={style.inputSearchBar}
         type="search"
         onChange={handleSearch}
+        placeholder="Search your character..."
       />
       <button
         className={style.buttonSearchBar}

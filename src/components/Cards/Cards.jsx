@@ -7,7 +7,7 @@ export default function Cards(props) {
   return (
     <div className={style.divCards}>
       {characters.length === 0 ? (
-        <p className={style.pCards}>¡Busca un personaje!</p>
+        <p className={style.pCards}>Look for a character...</p>
       ) : (
         characters.map((element) => (
           <Card

@@ -1,10 +1,13 @@
 .divCards{
-    display: flex;
+  display: flex;
   justify-content: space-evenly;
 }
 
 .pCards{
+  background-color: #00b300;
+  border-radius: 10px;
   color: white;
+  font-weight: bold;
   margin-top: 150px;
-  font-size: 24px;
+  font-size: 50px;
 }

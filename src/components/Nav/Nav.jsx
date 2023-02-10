@@ -10,12 +10,17 @@ export default function Nav(props) {
         alt="rick_and_morty_logo"
         width="20%"
       />
-      <Link to="/home" className={style.links}>
-        Home
-      </Link>
-      <Link to="/about" className={style.links}>
-        About
-      </Link>
+      <div>
+        <Link to="/home">
+          <button className={style.links}>Home</button>
+        </Link>
+        <Link to="/about">
+          <button className={style.links}>About</button>
+        </Link>
+        <button className={style.links} onClick={props.logout}>
+          Logout
+        </button>
+      </div>
       <SearchBar onSearch={props.onSearch} random={props.random} />
     </nav>
   );
