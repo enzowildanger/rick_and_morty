@@ -9,7 +9,7 @@
 
 .buttonCard{
     position: relative;
-    right: -120px;
+    right: -110px;
     top: 10px;
     background-color: red;
     color: white;
@@ -19,6 +19,19 @@
     border-radius: 5px;
     font-weight: bold;
     font-size: 15px;
+}
+
+.buttonFav{
+    position: relative;
+    left: -110px;
+    top: 10px;
+    border: 0px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 25px;
+    background-color: #00b300;
 }
 
 .h2Card{

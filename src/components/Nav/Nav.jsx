@@ -14,11 +14,17 @@ export default function Nav(props) {
         <Link to="/home">
           <button className={style.links}>Home</button>
         </Link>
+        <Link to="/favorites">
+          <button className={style.links}>Favorites</button>
+        </Link>
+        <Link to="/portfolio">
+          <button className={style.links}>Portfolio</button>
+        </Link>
         <Link to="/about">
           <button className={style.links}>About</button>
         </Link>
         <button className={style.links} onClick={props.logout}>
-          Logout
+          Log Out
         </button>
       </div>
       <SearchBar onSearch={props.onSearch} random={props.random} />

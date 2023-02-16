@@ -1,12 +1,14 @@
-import "./App.css";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
 import Nav from "./components/Nav/Nav";
 import Cards from "./components/Cards/Cards.jsx";
 import About from "./components/About/About.jsx";
 import Detail from "./components/Detail/Detail";
 import Error from "./components/Error/Error.jsx";
 import Form from "./components/From/Form.jsx";
-import React, { useState, useEffect } from "react";
-import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import Favorites from "./components/Favorites/Favorites.jsx";
+import Portfolio from "./components/Portfolio/Portfolio.jsx";
+import "./App.css";
 
 function App() {
   const [characters, setCharacters] = useState([]);
@@ -69,6 +71,12 @@ function App() {
           path="/home"
           element={<Cards characters={characters} onClose={onClose} />}
         />
+        <Route
+          exact
+          path="/favorites"
+          element={<Favorites characters={characters} onClose={onClose} />}
+        />
+        <Route exact path="/portfolio" element={<Portfolio />} />
         <Route exact path="/about" element={<About />} />
         <Route exact path="/detail/:detailId" element={<Detail />} />
         <Route path="*" element={<Error />} />

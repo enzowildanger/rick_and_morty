@@ -51,7 +51,7 @@ export default function Form(props) {
           onChange={handleInputChange}
         />
         <p className={style.danger}>{errors.password}</p>
-        <button className={style.buttonForm}>Login</button>
+        <button className={style.buttonForm}>Log In</button>
       </form>
     </div>
   );

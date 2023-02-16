@@ -1,10 +1,50 @@
 import { toBePartiallyChecked } from "@testing-library/jest-dom/dist/matchers";
-import style from "./Card.module.css";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavorites, deleteFavorites } from "../../redux/actions";
+import style from "./Card.module.css";
 
 export default function Card(props) {
+  const [isFav, setIsFav] = useState(false);
+  const dispatch = useDispatch();
+  const myFavorites = useSelector((s) => s.myFavorites);
+
+  useEffect(() => {
+    myFavorites.forEach((id) => {
+      if (id === props.id) {
+        setIsFav(true);
+      }
+    });
+  }, [myFavorites]);
+
+  function handleFavorite(id) {
+    if (isFav) {
+      setIsFav(false);
+      dispatch(deleteFavorites(id));
+    } else {
+      setIsFav(true);
+      dispatch(addFavorites(id));
+    }
+  }
+
   return (
     <div className={style.divCard}>
+      {isFav ? (
+        <button
+          className={style.buttonFav}
+          onClick={() => handleFavorite(props.id)}
+        >
+          💛
+        </button>
+      ) : (
+        <button
+          className={style.buttonFav}
+          onClick={() => handleFavorite(props.id)}
+        >
+          🤍
+        </button>
+      )}
       <button className={style.buttonCard} onClick={props.onClose}>
         X
       </button>

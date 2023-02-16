@@ -1,0 +1,13 @@
+.divFav{
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  .pFav{
+    background-color: #00b300;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    margin-top: 150px;
+    font-size: 50px;
+  }
