@@ -76,7 +76,11 @@ export default function Detail() {
         </div>
         <div>
           {character.image && (
-            <img className={style.imageDetail} src={character.image} />
+            <img
+              className={style.imageDetail}
+              src={character.image}
+              alt="rym"
+            />
           )}
         </div>
       </div>

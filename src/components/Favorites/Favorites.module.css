@@ -2,7 +2,6 @@
     display: flex;
     justify-content: space-evenly;
   }
-  
   .pFav{
     background-color: #00b300;
     border-radius: 10px;
@@ -11,3 +10,22 @@
     margin-top: 150px;
     font-size: 50px;
   }
+
+  .divFilter{
+    border-radius: 10px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    padding: 15px 30px;
+    margin-bottom: 20px;
+  }
+  .buttonFilter{
+    background-color: #00b300;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    padding: 5px;
+    margin: 0px
+}
