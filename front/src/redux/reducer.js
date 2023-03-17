@@ -1,9 +1,9 @@
 import {
+  GET_FAVS,
   ADD_FAVORITES,
   DELETE_FAVORITES,
   FILTER_FAV,
   ORDER_FAV,
-  RESET_FAV,
 } from "./actions";
 
 const initialState = {
@@ -13,6 +13,11 @@ const initialState = {
 
 export default function rootReducer(state = initialState, { type, payload }) {
   switch (type) {
+    case GET_FAVS:
+      return {
+        ...state,
+        myFavorites: [...state.myFavoritesOrigin],
+      };
     case ADD_FAVORITES:
       return {
         ...state,
@@ -49,11 +54,6 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         myFavorites: order,
-      };
-    case RESET_FAV:
-      return {
-        ...state,
-        myFavorites: [...state.myFavoritesOrigin],
       };
     default:
       return state;

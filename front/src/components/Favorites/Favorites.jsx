@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../Card/Card";
 import { useSelector, useDispatch } from "react-redux";
-import { filterFav, orderFav, resetFav } from "../../redux/actions";
+import { filterFav, orderFav, getFav } from "../../redux/actions";
 import style from "./Favorites.module.css";
 
 export default function Favorites(props) {
@@ -49,7 +49,7 @@ export default function Favorites(props) {
           <option value="unknown">unknown</option>
         </select>
         <button
-          onClick={() => dispatch(resetFav())}
+          onClick={() => dispatch(getFav())}
           className={style.buttonFilter}
         >
           Reset filters
