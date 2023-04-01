@@ -3,11 +3,12 @@ export const ADD_FAVORITES = "ADD_FAVORITES";
 export const DELETE_FAVORITES = "DELETE_FAVORITES";
 export const FILTER_FAV = "FILTER_FAV";
 export const ORDER_FAV = "ORDER_FAV";
+export const LOGIN = "LOGIN";
 
-export function addFav(ch) {
+export function addFav(ch, idUser) {
   return async function (dispatch) {
     try {
-      const data = await fetch("http://localhost:3001/fav", {
+      const data = await fetch(`http://localhost:3001/fav?idUser=${idUser}`, {
         method: "POST",
         body: JSON.stringify(ch),
         headers: { "Content-Type": "application/json; charset= UTF-8" },
@@ -23,12 +24,15 @@ export function addFav(ch) {
   };
 }
 
-export function deleteFav(id) {
+export function deleteFav(id, idUser) {
   return async function (dispatch) {
     try {
-      const data = await fetch(`http://localhost:3001/fav/${id}`, {
-        method: "DELETE",
-      }).then((response) => response.json());
+      const data = await fetch(
+        `http://localhost:3001/fav/${id}?idUser=${idUser}`,
+        {
+          method: "DELETE",
+        }
+      ).then((response) => response.json());
       if (data.success)
         dispatch({
           type: DELETE_FAVORITES,
@@ -40,12 +44,12 @@ export function deleteFav(id) {
   };
 }
 
-export function getFav() {
+export function getFav(idUser) {
   return async function (dispatch) {
     try {
-      const data = await fetch(`http://localhost:3001/fav`).then((response) =>
-        response.json()
-      );
+      const data = await fetch(
+        `http://localhost:3001/fav?idUser=${idUser}`
+      ).then((response) => response.json());
       if (data)
         dispatch({
           type: GET_FAVS,
@@ -68,5 +72,19 @@ export function orderFav(id) {
   return {
     type: ORDER_FAV,
     payload: id,
+  };
+}
+
+export function login(email, password) {
+  return async function (dispatch) {
+    try {
+      const obj = await fetch(
+        `http://localhost:3001/login?email=${email}&password=${password}`
+      ).then((response) => response.json());
+
+      if (obj.access) dispatch({ type: LOGIN, payload: obj.id });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }

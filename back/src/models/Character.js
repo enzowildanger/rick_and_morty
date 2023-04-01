@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "Favorite",
+    "Character",
     {
       id: {
         type: DataTypes.INTEGER,
@@ -13,6 +13,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      status: {
+        type: DataTypes.ENUM("Alive", "Dead", "unknown"),
+        allowNull: false,
+      },
       species: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -21,19 +25,15 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM("Female", "Male", "Genderless", "unknown"),
         allowNull: false,
       },
+      origin: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       image: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      // status: {
-      //   type: DataTypes.ENUM("Alive", "Dead", "unknown"),
-      //   allowNull: false,
-      // },
-      // origin: {
-      //   type: DataTypes.STRING,
-      //   allowNull: false,
-      // },
     },
-    { timestamps: false, tableName: "favorites" }
+    { timestamps: false, tableName: "characters" }
   );
 };

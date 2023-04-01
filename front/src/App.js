@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "./redux/actions";
 import Nav from "./components/Nav/Nav";
 import Cards from "./components/Cards/Cards.jsx";
 import About from "./components/About/About.jsx";
@@ -22,10 +24,10 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         if (data.name) {
-          setCharacters((oldChars) => [...oldChars, data]);
-          // characters.find((element) => (element.id === data.id) === undefined)
-          //   ? setCharacters((characters) => [...characters, data])
-          //   : alert("Personaje repetido, prueba otro ID.");
+          // setCharacters((oldChars) => [...oldChars, data]);
+          characters.find((element) => element.id === data.id) === undefined
+            ? setCharacters((characters) => [...characters, data])
+            : alert("Personaje repetido, prueba otro ID.");
         } else {
           alert("No hay personajes con ese ID.");
         }
@@ -38,13 +40,17 @@ function App() {
   }
 
   const location = useLocation();
-  const navigate = useNavigate();
   const [access, setAccess] = useState(false);
-  const username = "ejemplo@gmail.com";
-  const password = "password1";
+  const navigate = useNavigate();
+  // const username = "ejemplo@gmail.com";
+  // const password = "password1";
 
-  function login(userData) {
-    if (userData.password === password && userData.username === username) {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.idUser);
+
+  function logIn(userData) {
+    dispatch(login(userData.username, userData.password));
+    if (user) {
       setAccess(true);
       navigate("/home");
     }
@@ -65,7 +71,7 @@ function App() {
       )}
 
       <Routes>
-        <Route path="/" element={<Form login={login} />} />
+        <Route path="/" element={<Form login={logIn} />} />
         <Route
           exact
           path="/home"

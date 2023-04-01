@@ -4,9 +4,11 @@ import {
   DELETE_FAVORITES,
   FILTER_FAV,
   ORDER_FAV,
+  LOGIN,
 } from "./actions";
 
 const initialState = {
+  idUser: 0,
   myFavorites: [],
   myFavoritesOrigin: [],
 };
@@ -54,6 +56,11 @@ export default function rootReducer(state = initialState, { type, payload }) {
       return {
         ...state,
         myFavorites: order,
+      };
+    case LOGIN:
+      return {
+        ...state,
+        idUser: payload,
       };
     default:
       return state;
